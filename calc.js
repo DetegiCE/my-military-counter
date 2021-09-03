@@ -15,12 +15,19 @@ var startDay = new Date(startYear, startMonth-1, startDate).getTime();
 var endDay = new Date(endYear, endMonth-1, endDate+1).getTime();
 
 var expectId = document.getElementById("expected");
+var expect2Id = document.getElementById("expected2");
 var probarId = document.getElementById("proBar");
 
 setInterval( function() {
     var now = new Date().getTime();
     var perc = ((now - startDay)/(endDay - startDay) * 100).toFixed(8);
-    expectId.innerHTML = perc;
+    // expectId.innerHTML = "종료일: " + endYear + "년 " + endMonth + "월 " + endDate + "일";
+
+    var leftDays = parseInt((endDay-now)/86400000);
+    var leftHours = parseInt(((endDay-now)-leftDays*86400000)/3600000);
+    var leftMinutes = parseInt(((endDay-now)-leftDays*86400000-leftHours*3600000)/60000);
+    var leftSeconds = (((endDay-now)-leftDays*86400000-leftHours*3600000-leftMinutes*60000)/1000).toFixed(3);
+    expect2Id.innerHTML = leftDays + "일 " + parseInt(leftHours) + "시간 " + parseInt(leftMinutes) + "분 " + leftSeconds + "초"
 
     probarId.setAttribute("aria-valuenow", perc);
     probarId.setAttribute("style", "width:"+perc+"%")
