@@ -6,7 +6,7 @@ body, html {
 }
 
 .bg-image {
-  background-image: url("/res/img/ridilogo.png");
+  background-image: url("https://github.com/DetegiCE/my-military-counter/blob/main/res/img/ridilogo.png?raw=true");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
